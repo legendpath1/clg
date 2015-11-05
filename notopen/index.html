@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.cailegong.com">
+<html xmlns="http://www.cailegong.com">
+<head>
+
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen, projection" /> <!-- main stylesheet -->
+<link rel="stylesheet" type="text/css" media="all" href="css/tipsy.css" /> <!-- Tipsy implementation -->
+
+<!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="css/ie8.css" />
+<![endif]-->
+
+<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script> <!-- uiToTop implementation -->
+<script type="text/javascript" src="scripts/custom-scripts.js"></script>
+<script type="text/javascript" src="scripts/jquery.tipsy.js"></script> <!-- Tipsy -->
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+			
+	universalPreloader();
+						   
+});
+
+$(window).load(function(){
+
+	//remove Universal Preloader
+	universalPreloaderRemove();
+	
+	rotate();
+    dogRun();
+	dogTalk();
+	
+	//Tipsy implementation
+	$('.with-tooltip').tipsy({gravity: $.fn.tipsy.autoNS});
+						   
+});
+
+</script>
+
+
+<title>即将开放，敬请期待</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+
+<!-- Universal preloader -->
+<div id="universal-preloader">
+    <div class="preloader">
+        <img src="images/universal-preloader.gif" alt="universal-preloader" class="universal-preloader-preloader" />
+    </div>
+</div>
+<!-- Universal preloader -->
+
+<div id="wrapper">
+<!-- 404 graphic -->
+	<div class="graphic"></div>
+<!-- 404 graphic -->
+
+<!-- Not found text -->
+
+<!-- search form --><!-- search form -->
+
+<!-- top menu -->
+<div class="top-menu">
+	<a href="http://www.cailegong.com" class="with-tooltip" title="回到彩乐宫首页">首页</a> | <a href="http://www.cailegong.com/game.html" class="with-tooltip" title="去游戏世界地图">游戏地图</a> | <a href="http://chat.pop800.com/web800/c.do?n=167901&type=1&url=http%3A%2F%2Fwww.clc888.com%2Fdefault_frame.p" class="with-tooltip" title="联系客服">客服</a> | <a href="http://www.clghelp.com" class="with-tooltip" title="彩乐宫帮助中心">帮助</a>
+</div>
+<!-- top menu -->
+
+<div class="dog-wrapper">
+<!-- dog running -->
+	<div class="dog"></div>
+<!-- dog running -->
+	
+<!-- dog bubble talking -->
+	<div class="dog-bubble">
+    	
+    </div>
+    
+    <!-- The dog bubble rotates these -->
+    <div class="bubble-options">
+    	<p class="dog-bubble">
+        	我是招财虎！我不是猫！！喵~
+        </p>
+    	<p class="dog-bubble">
+	        <br />
+        	 喵呜!!~
+        </p>
+        <p class="dog-bubble">
+        	<br />
+        	不用担心！有我在一定赢！
+        </p>
+        <p class="dog-bubble">
+        	我希望我有一千万<br /><img style="margin-top:8px" src="images/cookie.png" alt="cookie" />
+        </p>
+        <p class="dog-bubble">
+        	<br />
+        	耐心等等，听说快开门了
+        </p>
+        <p class="dog-bubble">
+        	<br />
+        	哪个宫最好玩？？
+        </p>
+        <p class="dog-bubble">
+        	所以我只是在兜圈子？罗...
+        </p>
+        <p class="dog-bubble">
+        	<br />
+            迷路了-__-...
+        </p>
+        <p class="dog-bubble">
+        	每个宫都好好玩啊<br /><img style="margin-top:8px" src="images/cat.png" alt="cat" />
+        </p>
+        <p class="dog-bubble">
+        	那么，我到底去哪玩？ @_@
+        </p>
+    </div>
+    <!-- The dog bubble rotates these -->
+<!-- dog bubble talking -->
+</div>
+
+<!-- planet at the bottom -->
+	<div class="planet"></div>
+<!-- planet at the bottom -->
+</div>
+<div style="text-align:center;">
+<p>来源：www.cailegong.com</p>
+</div>
+</body>
+</html>

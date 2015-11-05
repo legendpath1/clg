@@ -1,0 +1,144 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0px; margin:0px; box-sizing:border-box}
+body{ font-family:"微软雅黑"; font-size:14px; color:#666; text-decoration:none; background: url(../../images/userCentre/body-bg.jpg) no-repeat center center; background-size:auto 100%}
+
+a{ font-family:"微软雅黑"; font-size:14px; color:#666; text-decoration:none;}
+img{ max-width:100%}
+ul{ list-style:none}
+.padding-box{ padding:3% 9%; padding-bottom:2%}
+
+.border-box{ background:url(../../images/userCentre/box-bg.png) no-repeat top center; background-size:100% 100%; padding:4%; padding-top:5%; position:relative; padding-top:14%}
+
+.border-box .list-menu{ position:absolute; width:110px; right:-110px; bottom:20px;}
+
+.border-box .list-menu ul li{ text-align:center; margin-top:10px;}
+.border-box .list-menu ul li p{ line-height:25px; padding-top:8px; color:#d5cbad; font-weight:bold; font-size:20px;}
+
+.disc-box{ position:relative; padding-top:13%}
+.disc-box .usr-box{ position:absolute; left:-7px; top:0px;}
+.disc-box .usr-box ul{ background:url(../../images/userCentre/user-disc.png) no-repeat; width:276px; height:122px; margin-left:30px; padding-top:12px; background-size:100%}
+.disc-box .usr-box ul li{ text-align:center; color:#070707; font-size:16px; font-family:"楷体"; height:40px; line-height:40px; margin-top:9px; font-weight:bold; text-indent:80px;}
+
+.disc-box .usr-box .pic{ background:url(../../images/userCentre/user-bg.png) no-repeat; width:157px; height:145px; position:absolute; left:0px; top:0px; padding:20px;} 
+
+.tool-box{ position:absolute; width:370px; height:100px; right:0px; top:0px;}
+.tool-box ul{ float:right}
+.tool-box ul li{ width:50%; float:left; padding:10px; text-align:center}
+.tool-box ul li h3{ background: url(../../images/userCentre/tool-big.png) no-repeat bottom center; background-size:100% 100%; color:#e9e300; font-size:24px; text-indent:10px; letter-spacing:15px;}
+.tool-box ul li h3 a{color:#e9e300; display:block; white-space:nowrap; font-size:22px; letter-spacing:15px; padding:5px 15px; text-align:center}
+.tool-box ul li p{ background:url(../../images/userCentre/tool-small.png) no-repeat top center; background-size:100% 100%; color:#feec9a; padding-bottom:6px;}
+.tool-box ul li p a{ color:#feec9a}
+
+
+
+.padding-box2{ background:url(../../images/userCentre/opacity-bg.png) no-repeat center center; background-size:100% 100%; padding:15px;}
+
+.top-pt{ overflow:hidden}
+.top-pt .left{ width:23%; float:left; background:url(../../images/userCentre/sm-bg.png) repeat-y; background-size:100%; padding:10px 15px;}
+
+.top-pt .left h3{ background:url(../../images/userCentre/short-tex.png) no-repeat center center; width:145px; height:45px; line-height:44px; text-align:center; color:#d5cbad; font-size:18px; background-size:100% 100%}
+
+.top-pt .left ul{ padding-top:20%;}
+.top-pt .left ul li{ position:relative; padding-bottom:25%}
+.top-pt .left ul li strong{ position:absolute; left:0px; top:0px; width:70px;}
+.top-pt .left ul li .tex{ padding-left:80px; width:100%; position:relative}
+.top-pt .left ul li .tex b{ position:absolute; right:0px; top:0px; width:30px;}
+.top-pt .left ul li .tex p{ padding-right:35px;}
+.top-pt .left ul li .tex p span{ background:url(../../images/userCentre/tex.png) no-repeat center center; background-size:100% 100%; display:block; height:25px; line-height:25px; font-size:12px; color:#fff; text-indent:10px;}
+
+
+.refresh{ background:url(../../images/userCentre/shuaxin.png) no-repeat center center; width:82px; height:35px; text-align:center; line-height:35px; color:#d5cbad; font-size:11px; display:block; margin-top:30px;}
+
+
+.top-pt .right{ width:75%; float:right; display:inline; padding:10px 15px;}
+.top-pt .right h3{ background:url(../../images/userCentre/short-tex.png) no-repeat center center; width:145px; height:45px; line-height:45px; text-align:center; color:#d5cbad; font-size:18px; background-size:100% 100%}
+
+.zh-tools{ padding-top:20px; overflow:hidden}
+.zh-tools ul{ list-style:none; overflow:hidden; width:100%;}
+.zh-tools ul li{ width:33.333%; padding-right:25px; float:left; display:inline}
+.zh-tools ul li a{ display:block; background:url(../../images/userCentre/t-tex-bg.png) no-repeat center center;width:205px; background-size:auto 100%; height:45px; line-height:45px;color:#d5cbad; font-size:18px; font-weight:bold}
+
+.zh-tools ul li a span{ padding:0px; text-align:center; display:block}
+.zh-tools ul li a span strong{ width:30px; height:1px; display:inline-block }
+
+.box-disc{ background:url(../../images/userCentre/sm-box-bg.png) no-repeat center center; background-size:100% 100%; padding:10px 0px; margin-bottom:15px;}
+
+.box-disc .t{ padding-bottom:20px; overflow:hidden}
+.box-disc .t strong{ color:#c5b181; font-size:20px; float:left}
+.box-disc .t p{ float:right; width:55%; text-align:left}
+.box-disc .t p span{ font-size:20px; color:#fff; font-weight:bold}
+.box-disc .t p span.yel{ font-size:20px; color:#c5b181; font-weight:bold}
+.box-disc .t p input{ background:url(../../images/userCentre/tex.png) no-repeat center center; background-size:100% 100%; text-indent:10px; color:#fff; font-size:18px; height:30px; line-height:30px; border:none; min-width:150px; max-width:160px;}
+
+
+.box-disc .b{ overflow:hidden}
+.box-disc .b .disc{ width:47%; float:left; color:#c5b181; font-size:15px;}
+.box-disc .b .pass{ width:52%; float:right}
+
+.box-disc .b .pass span{ font-size:18px; color:#fff; font-weight:bold}
+.box-disc .b .pass span.yel{ font-size:20px; color:#c5b181; font-weight:bold}
+.box-disc .b .pass input{ background:url(../../images/userCentre/tex.png) no-repeat center center; background-size:100% 100%; text-indent:10px; color:#fff; font-size:18px; height:30px; line-height:30px; border:none; min-width:100px; max-width:130px;}
+
+.box-disc .b .pass .sub{ min-width:20px; background:url(../../images/userCentre/sub.png) no-repeat center center; width:100px; height:35px; background-size:100% 100%; text-indent:0px; cursor:pointer}
+
+.bottom-pt{ padding-top:10px; overflow:hidden; background:url(../../images/userCentre/bt-bg.png) no-repeat center center; background-size:100% 100%; margin-left:-7px; margin-right:-7px; padding:7px;}
+.bottom-pt .l{ float:left; width:20%; display:inline}
+.bottom-pt .r{ float:right; width:77%; display:inline}
+
+.bottom-pt .l ul li{ margin-bottom:10px;}
+.bottom-pt .r h3{ margin-bottom:10px;}
+.bottom-pt .r ul{ overflow:hidden; width:100%;}
+.bottom-pt .r ul li{ width:20%; color:#fff; font-size:15px; float:left; display:inline; padding:0 5px;}
+.bottom-pt .r ul li .padding{ position:relative; padding-left:55px; padding-top:18px;}
+.bottom-pt .r ul li .padding strong{ position:absolute; width:50px; left:0px; top:0px;}
+.bottom-pt .r ul li input{ background:url(../../images/userCentre/short-input.png) no-repeat center center; width:45px; height:35px; line-height:35px; text-align:center; font-size:16px; font-weight:bold; color:#fff; border:none}
+
+
+.shuaxin{ background:url(../../images/userCentre/sx-bg.png) no-repeat center center; width:120px; height:50px; background-size:100% 100%; display:block; line-height:50px; color:#d5cbad; font-size:14px; text-align:center; margin-top:20px;}
+
+
+.nl{ font-size:16px; color:#ffffff; font-weight:bold}
+.nll{ font-size:14px; color:#bfbfbf; font-weight:bold}
+
+
+
+@media (max-width: 1300px) {
+.top-pt .left h3{ font-size:18px;}
+.top-pt .right h3{ font-size:18px;}
+.zh-tools ul li a{ font-size:16px;}
+.box-disc .t strong{ font-size:18px; display:inline-block; line-height:40px}
+.box-disc .t p span{ font-size:18px;}
+.box-disc .t p span.yel{ font-size:18px;}
+.box-disc .b .pass span{ font-size:15px;}
+.box-disc .b .pass input{ max-width:80px;}
+.box-disc .b .pass .sub{ font-size:15px;}
+.box-disc .b .disc{ font-size:12px;}
+.border-box .list-menu ul li p{ font-size:16px; padding-top:0px;}
+.border-box .list-menu{ right: -80px;
+    width: 80px;}
+.top-pt .left ul li strong{ width:50px; padding-top:3px;}
+.top-pt .left ul li .tex{ padding-left:60px;}
+.top-pt .left ul li .tex b{ width:20px;}
+.top-pt .left ul li .tex p span{ font-size:14px;}
+.top-pt .left ul li .tex p{ padding-right:25px;}
+.bottom-pt .l ul li img{ height:40px;}
+.bottom-pt .r h3 img{ height:40px;}
+.bottom-pt .r ul li input{ width:30px;}
+.bottom-pt .r ul li{ font-size:13px;}
+
+.padding-box{ padding:3% 7% 2%}
+
+	}
+	
+	
+	
+	
+@media (min-width: 1700px) {
+	
+	body{ font-family:"微软雅黑"; font-size:14px; color:#666; text-decoration:none; background: url(../../images/userCentre/body-bg.jpg) no-repeat center center; background-size:100% 110%}
+
+	}
+	
+	
