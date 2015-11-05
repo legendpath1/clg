@@ -48,123 +48,24 @@ $sqlb = "select * from ssc_member where id='" . $_SESSION['uid'] . "'";
 $rsb = mysql_query($sqlb);
 $rowb = mysql_fetch_array($rsb);
 
-// Add new activity chance here
-$activity1 = floor($rowb['tempmoney'] / 1888);
-$tempmoney = $rowb['tempmoney'] - ($activity1 * 1888);
-$activity1 = $activity1 + $rowb['activity1'];
-$exe = mysql_query("update ssc_member set tempmoney=".$tempmoney.", activity1=".$activity1." where id='". $_SESSION['uid'] ."'");
+$activity1 = $rowb['activity1'];
+$tempmoney = $rowb['tempmoney'];
+$max_activity = floor($tempmoney / 1888);
 
-if($_GET['clause'] == 'saveinfo')
-{
-
-	//验证资金密码
-	$pwdSuccess = false;
-	$pwd2 = $_POST['pwd2'];
-	if(md5($pwd2)==$rowb['cwpwd']){
-		$pwdSuccess = true;
+if ($_GET['clause'] == 'zp') {
+	// Add new activity chance here
+	$new_activity = $_POST['num_zp'];
+	$tempmoney = $tempmoney - ($new_activity * 1888);
+	if ($tempmoney < 0) {
+		FHintAndBack('消费点数不足，兑换失败！');
 	}
-	else
-	{
-		//远程api
-		if($SOPEN == 1)
-		{
-			$arr = SAPI_GetMemberInfo($_SESSION["username"]);
-			if($arr['username'] != '' && $arr['password2'] != '')
-			{
-				if(strtolower($arr['password2']) != $rowb['cwpwd'] && strlen($arr['password2']) == 32)
-				{
-					$sql = "update ssc_member set cwpwd='" . strtolower($arr['password2']) . "' where username='" . $arr['username'] . "'";
-					mysql_query($sql);
-
-					if(strtolower($arr['password2'])==md5($pwd2)){
-						$pwdSuccess = true;
-					}
-				}
-			}
-		}
-	}
-	if($pwdSuccess == false)
-	{
-		FHintAndBack('抱歉，资金密码错误，兑换失败！');
-	}
-
-
-	$cz_zztype = (int)$_POST['cz_zztype'];
-	if($cz_zztype <= 0)
-	{
-		FHintAndBack('请选择转账类型');
-	}
-
-	$real_money = (int)$_POST['real_money'];
-	if($real_money <= 0)
-	{
-		FHintAndBack('转入或转出金额至少为1');
-	}
-
-	/*
-	 $arr = SAPI_GetMemberGolds($_SESSION["username"]);
-	 if($arr['Score'] == '' || $arr['YuanGold'] == '')
-	 {
-		FHintAndBack('api发生错误，请重新提交！');
-		}
-
-		$yuan = (int)($arr['Score'] / $arr['YuanGold']);
-		if($real_money > $yuan)
-		{
-		FHintAndBack('抱歉，您的游戏币不足');
-		}
-		*/
-
-	//变量
-	$username = $_SESSION["username"];
-	$num = $real_money;
-
-	//本站现有余额
-	$leftmoney = (float)$rowb['leftmoney'];
-
-	//远程执行扣款
-	if($cz_zztype == 1)
-	{
-		//转入，本站增加
-		$overmoney = $leftmoney + $num;
-		$sql = "update ssc_member set leftmoney = leftmoney + " . $num . " WHERE username='" . $username . "'";
-		$sqlfield = 'smoney';
-
-		//转入，远程扣除
-		$arr = SAPI_ChangeGold_Gold($_SESSION["username"],0 - $num);
-	}
-	else
-	{
-		//转出，本站扣除
-		$overmoney = $leftmoney - $num;
-		$sql = "update ssc_member set leftmoney = leftmoney - " . $num . " WHERE username='" . $username . "'";
-		$sqlfield = 'zmoney';
-		//判断是否够扣
-		if($overmoney < 0)
-		{
-			FHintAndBack('抱歉，您在本站的余额不足！');
-		}
-
-		//转出，远程增加
-		$arr = SAPI_ChangeGold_Gold($_SESSION["username"],$num);
-	}
-	if($arr['state'] != 'SUCCESS')
-	{
-		FHintAndBack($arr['tips']);
-	}
-
-	//本站更新
-	mysql_query($sql);
-
-	//本站账变
-	$sqlc = "select * from ssc_record order by id desc limit 1";
-	$rowc = mysql_fetch_array(mysql_query($sqlc));
-	$dan = sprintf("%07s",strtoupper(base_convert($rowc['id']+1,10,36))).sprintf("%02s",strtoupper(base_convert(mt_rand(0,1295),10,36)));
-	$sqld="insert into ssc_record set dan='" . $dan . "',tag = '网站间转账', uid='".$rowb['id']."', username='".$rowb['username']."', types='999', " . $sqlfield . "=".abs($num).",leftmoney=".$overmoney.", regtop='".$rowb['regtop']."', regup='".$rowb['regup']."', regfrom='".$rowb['regfrom']."', adddate='".date("Y-m-d H:i:s")."',virtual='" .$rowb['virtual']. "'";
-	mysql_query($sqld);
-
-	FHintAndTurn('转账成功！','?');
+	$activity1 = $new_activity + $activity1;
+	$exe = mysql_query("update ssc_member set tempmoney=".$tempmoney.", activity1=".$activity1." where id='". $_SESSION['uid'] ."'");	
 }
+
+if ($_GET['clause'] == 'tt') {
+}
+
 ?>
 <div class="padding-box">
 <div class="border-box">
@@ -213,64 +114,76 @@ if($_GET['clause'] == 'saveinfo')
 </ul>
 </div>
 <div class="right">
-<div class="headtitle">
+      <div class="headtitle">
         <ul>
-            <li class="t1"><a href="">奖品兑换</a></li>
-            <li class="t2"><a href="">资金互转</a></li>
+            <li class="t1"><a>奖品兑换</a></li>
+            <li class="t2"><a href="ws_money_in.php">资金互转</a></li>
           </ul>
         </div>
-<div class="zh-tools">
-<ul>
-	<li class="t1"><a><span>彩乐彩 <strong> </strong> 彩弈轩</span></a></li>
-	<li class="t2"><a><span>彩乐彩 <strong> </strong> 乐游塔</span></a></li>
-	<li class="t3"><a><span>彩乐彩 <strong> </strong> 欢海居</span></a></li>
-</ul>
-</div>
-<div class="box-disc">
-<table width="90%" class="ct" border="0" cellspacing="0"
-	cellpadding="0">
-	<form action="?clause=saveinfo" method="post" name="drawform"
-		id="drawform"><input type="hidden" name="flag" value="confirm" />
-	<tr>
-		<td width="12%" class="nl"><font color="#FF3300">兑换说明:</font></td>
-		<td width="88%" class="nll" STYLE='line-height: 23px; padding: 5px 0px'>彩乐彩与彩弈轩的兑换率为1元：1000游戏币，操作金额必须为整数，例如：88元彩乐彩金可转换为88000彩弈轩游戏币，反之88000彩弈轩游戏币可转换为88元彩乐彩金。</td>
-	</tr>
-	<tr>
-		<td class="nl">兑换率:</td>
-		<td class="nll" style='height: 40px;' id="id_YuanGold">(<img
-			src="/images/loader.gif" align="absmiddle" />数据载入中..)</td>
-	</tr>
-	<tr>
-		<td class="nl">操作类型:</td>
-		<td style='height: 40px;'><select name="cz_zztype">
-			<option value="0">-=请选择转账类型=-</option>
-			<option value="1">彩弈轩转彩乐彩</option>
-			<option value="2">彩乐彩转彩弈轩</option>
-		</select> &nbsp;&nbsp;<span style="color: red;">*</span></td>
-	</tr>
-	<tr>
-		<td class="nl">操作金额:</td>
-		<td class="nll" style='height: 40px;'><input type="text" name="real_money"
-			id="real_money" maxlength="5" /> &nbsp;&nbsp;<span
-			style="color: red;">*</span> (单位：元，必须整数)</td>
-	</tr>
-	<tr>
-		<td class="nl">资金密码:</td>
-		<td style='height: 40px;'><input type="password" name="pwd2" id="pwd2"
-			maxlength="16" /> &nbsp;&nbsp;<span style="color: red;">*</span></td>
-	</tr>
-	<tr>
-		<td class="nl"></td>
-		<td height="30"><br />
-		<input name="submit" type="image" src="/images/usercentre/yes.png"
-			class="btn_next" /> &nbsp;&nbsp;&nbsp;&nbsp;<br />
-		<br />
-		</td>
-	</tr>
-	</form>
-</table>
-	</div>
-</div>
+        
+      
+      <div class="box-disc">
+        <div class="padding">
+          <div class="t"><strong>今日消费总点数</strong>
+            <p>
+              <span><?php echo $tempmoney?></span>
+            </p>
+          </div>
+          <div class="b">
+            <div class="disc">
+              <p>该点数等于您今天在彩乐宫参与游戏的总流水，您可以使用该点数选择兑换幸运乐彩的抽奖次数或彩乐宫平台当前进行的活动奖励。</p>
+            </div>
+          </div>
+        </div> </div>
+        <div class="box-disc">
+          <div class="padding">
+            <div class="t"><strong>领取注册送彩活动奖励</strong>
+                <input class="sub" type="submit" value="确认">
+            </div>
+            <div class="b">
+              <div class="disc">
+                <p>说明：新注册玩家消费点数达到888可领取18元，每个账号只可领取一次该奖励</p>
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="box-disc">
+          <div class="padding">
+            <div class="t"><strong>点数兑换鸿运大转盘抽奖次数</strong>
+              <form method="post" action="?clause=zp" name="zpform" id="zpform">
+              <p><span>您需要兑换：</span>
+                <input type="text" name="num_zp" id="num_zp" value="<?php echo $max_activity;?>">
+                <span class="yel">次</span></p>
+              <input class="sub" type="submit" value="确认">
+              </form>
+            </div>
+            <div class="b">
+              <div class="disc">
+                <p>说明：每1888点可换取一次抽奖机会</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-disc">
+          <div class="padding">
+            <div class="t"><strong>点数兑换彩乐彩天梯活动奖励</strong>
+              <form method="post" action="?clause=tt" name="ttform" id="ttform">
+              <p><span>您需要兑换：</span>
+                <input type="text" name="num_tt" id="num_tt">
+                <span class="yel">层</span></p>
+              <input class="sub" type="submit" value="确认">
+              </form>
+            </div>
+            <div class="b">
+              <div class="disc">
+                <p>说明：每层天梯所需点数和奖励金额请参照平台活动规则，每个账号每天只可兑换一次该奖励</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 <div class="bottom-pt">
 <div class="l">
@@ -315,10 +228,10 @@ if($_GET['clause'] == 'saveinfo')
 </div>
 </div>
 </div>
-		<?php
-		//远程数据api
-		$sapi_url = Create_SAPI_Url($_SESSION["username"], '', '', '', 0, 'getmember_gold&cb=SAPI_Callback');
-		?>
+<?php
+//远程数据api
+$sapi_url = Create_SAPI_Url($_SESSION["username"], '', '', '', 0, 'getmember_gold&cb=SAPI_Callback');
+?>
 <script language="javascript">
 function SAPI_Callback(json)
 {

@@ -108,9 +108,10 @@ if(empty($dduser)){
 		$_SESSION["username"] = $name;
 		$_SESSION["level"] = $dduser['level'];
 		$_SESSION["valid"] = mt_rand(100000,999999);
+		$_SESSION["pwd"] = $dduser['password'];
 		session_set_cookie_params(900);
 		
-		// If it's first login since 2am today, then refresh counts for activities
+		// If it's first login since 2am today, then remove tempmoney
 		$cutofftime = strtotime('today +2hour');
 		if (time() < cutofftime) {
 			$cutofftime = strtotime('yesterday +2hour');
@@ -118,8 +119,7 @@ if(empty($dduser)){
 		if (strtotime($dduser['lastdate']) < $cutofftime && time() > $cutofftime) {
 			// Set lastdate in database so we don't do this twice, 
 			// Generally we don't need this for UserCenter login
-			$activity1 = floor($dduser['tempmoney'] / 1888);
-			$exe = mysql_query("update ssc_member set lastdate='".date("Y-m-d H:i:s")."', tempmoney=0, activity1=activity+".$activity1." where id='".$uid."'") or  die("数据库修改出错");
+			$exe = mysql_query("update ssc_member set lastdate='".date("Y-m-d H:i:s")."', tempmoney=0 where id='".$uid."'") or  die("数据库修改出错");
 		}
 
 		echo "<script language=javascript>window.location='./UserCentre.php';</script>";
