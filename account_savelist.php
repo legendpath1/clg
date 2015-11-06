@@ -6,7 +6,7 @@ require_once 'check.php';
 
 if($_REQUEST['check']!="914"){
 	if($_SESSION["cwflag"]!="ok"){
-		$_SESSION["cwurl"]="account_drawlist.php";
+		$_SESSION["cwurl"]="account_savelist.php";
 		echo "<script language=javascript>window.location='account_check.php';</script>";
 		exit;
 	}
@@ -56,7 +56,7 @@ if($page<5){
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:esun>
 <head>
-    <title>娱乐平台  - 提现记录</title>
+    <title>娱乐平台  - 充值记录</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Pragma" content="no-cache" />
         <script>var pri_imgserver = '';</script>
@@ -166,7 +166,7 @@ if($page<5){
         <a href="/account_drawlist.php?check=914">提现记录</a>
         <a href="/account_draw.php?check=914">平台提现</a>
         <a class="act" href="/account_savelist.php?check=914">充值记录</a>
-        <a href="/account_autosavea.php?check=">在线充值</a>
+        <a href="/account_autosavea.php?check=914">在线充值</a>
         <a href="/ws_money_in.php">网站间转账
     </div>
 </div>

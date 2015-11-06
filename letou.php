@@ -192,7 +192,6 @@ $last_nums = explode(",", $rowc['prize_nums']);
 
     if (form) {
 	  form.submit();
-	  alert(aryString);
     }
   }
   
