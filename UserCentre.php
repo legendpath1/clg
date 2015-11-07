@@ -52,7 +52,7 @@ $activity1 = $rowb['activity1'];
 $tempmoney = $rowb['tempmoney'];
 $max_activity = floor($tempmoney / 1888);
 
-if ($_GET['clause'] == 'zp') {
+if ($_GET['clause'] == 'zp' && $_POST['subbtn'] == "确认") {
 	// Add new activity chance here
 	$new_activity = $_POST['num_zp'];
 	$tempmoney = $tempmoney - ($new_activity * 1888);
@@ -63,7 +63,7 @@ if ($_GET['clause'] == 'zp') {
 	$exe = mysql_query("update ssc_member set tempmoney=".$tempmoney.", activity1=".$activity1." where id='". $_SESSION['uid'] ."'");	
 }
 
-if ($_GET['clause'] == 'tt') {
+if ($_GET['clause'] == 'tt'  && $_POST['subbtn'] == "确认") {
 }
 
 ?>
@@ -156,7 +156,7 @@ if ($_GET['clause'] == 'tt') {
               <p><span>您需要兑换：</span>
                 <input type="text" name="num_zp" id="num_zp" value="<?php echo $max_activity;?>">
                 <span class="yel">次</span></p>
-              <input class="sub" type="submit" value="确认">
+              <input class="sub" name="subbtn" id="subbtn" type="submit" value="确认">
               </form>
             </div>
             <div class="b">
