@@ -4,7 +4,7 @@ error_reporting(0);
 require_once 'conn.php';
 require_once 'check.php';
 
-$sqla = "select * from clg_letou where status='1'";
+$sqla = "select * from clg_letou where status='1' order by id desc limit 1";
 $rsa = mysql_query($sqla);
 $rowa = mysql_fetch_array($rsa);
 $prize = $rowa['prize'];
@@ -18,7 +18,7 @@ $sqlb = "select * from ssc_member where id='" . $_SESSION['uid'] . "'";
 $rsb = mysql_query($sqlb);
 $rowb = mysql_fetch_array($rsb);
 
-$sqlc = "select * from clg_letou where id='". ($rowa['id']-1) ."'";
+$sqlc = "select * from clg_letou where status='2' order by id desc limit 1";
 $rsc = mysql_query($sqlc);
 $rowc = mysql_fetch_array($rsc);
 $last_nums = explode(",", $rowc['prize_nums']);
