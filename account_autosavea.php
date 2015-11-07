@@ -31,14 +31,14 @@ $rowa = mysql_fetch_array($rsa);
 $leftmoney=$rowa['leftmoney'];
 
 if($rowa['cwpwd']==""){
-	$_SESSION["cwurl"]="account_savea.php";
+	$_SESSION["cwurl"]="account_autosavea.php";
 	echo "<script language=javascript>window.location='account_setpwd.php';</script>";
 	exit;
 }
 
 if($_GET['check']!="914"){
 	if($_SESSION["cwflag"]!="ok"){
-		$_SESSION["cwurl"]="account_savea.php";
+		$_SESSION["cwurl"]="account_autosavea.php";
 		echo "<script language=javascript>window.location='account_check.php';</script>";
 		exit;
 	}
@@ -98,6 +98,9 @@ if($tcbank==""){
         for( i=0; i<s; i++ ){
             if( obj.bankinfo[i].checked == true ){
                 ischecked = true;
+                if (i != 21 && i != 22) {
+                    $('#saveform').attr('action', './account_autosave2.php');
+                }
             }
         }
         if( ischecked == false ){
