@@ -117,7 +117,7 @@ if ($_GET['clause'] == 'tt'  && $_POST['subbtn'] == "确认") {
       <div class="headtitle">
         <ul>
             <li class="t1"><a>奖品兑换</a></li>
-            <li class="t2"><a href="ws_money_in.php">资金互转</a></li>
+            <li class="t2"><a href="UserCentre2.php">资金互转</a></li>
           </ul>
         </div>
         
@@ -135,28 +135,15 @@ if ($_GET['clause'] == 'tt'  && $_POST['subbtn'] == "确认") {
             </div>
           </div>
         </div> </div>
-        <div class="box-disc">
-          <div class="padding">
-            <div class="t"><strong>领取注册送彩活动奖励</strong>
-                <input class="sub" type="submit" value="确认">
-            </div>
-            <div class="b">
-              <div class="disc">
-                <p>说明：新注册玩家消费点数达到888可领取18元，每个账号只可领取一次该奖励</p>
-                
-              </div>
-            </div>
-          </div>
-          
-        </div>
+
         <div class="box-disc">
           <div class="padding">
             <div class="t"><strong>点数兑换鸿运大转盘抽奖次数</strong>
               <form method="post" action="?clause=zp" name="zpform" id="zpform">
               <p><span>您需要兑换：</span>
                 <input type="text" name="num_zp" id="num_zp" value="<?php echo $max_activity;?>">
-                <span class="yel">次</span></p>
-              <input class="sub" name="subbtn" id="subbtn" type="submit" value="确认">
+                <span class="yel">次</span>
+              <input class="sub" name="subbtn" id="subbtn" type="image" src="/images/usercentre/yes2.png" value="确认"></p>
               </form>
             </div>
             <div class="b">
@@ -172,8 +159,8 @@ if ($_GET['clause'] == 'tt'  && $_POST['subbtn'] == "确认") {
               <form method="post" action="?clause=tt" name="ttform" id="ttform">
               <p><span>您需要兑换：</span>
                 <input type="text" name="num_tt" id="num_tt">
-                <span class="yel">层</span></p>
-              <input class="sub" type="submit" value="确认">
+                <span class="yel">层</span>
+              <input class="sub" name="subbtn" id="subbtn" type="image" src="/images/usercentre/yes2.png" value="确认"></p>
               </form>
             </div>
             <div class="b">
@@ -204,19 +191,19 @@ if ($_GET['clause'] == 'tt'  && $_POST['subbtn'] == "确认") {
 	<li>
 	<div class="padding"><strong><img src="images/userCentre/cljh (2).png"></strong>
 	<p><img src="images/userCentre/kbx.png"></p>
-	<p><input type="text" value="<?php echo $activity1?>"> 次</p>
+	<p><input type="text" value="0"> 次</p>
 	</div>
 	</li>
 	<li>
 	<div class="padding"><strong><img src="images/userCentre/zmd-img.png"></strong>
 	<p><img src="images/userCentre/zmd.png"></p>
-	<p><input type="text" value="<?php echo $activity1?>"> 次</p>
+	<p><input type="text" value="0"> 次</p>
 	</div>
 	</li>
 	<li>
 	<div class="padding"><strong><img src="images/userCentre/kjd-img.png"></strong>
 	<p><img src="images/userCentre/kjd.png"></p>
-	<p><input type="text" value="<?php echo $activity1?>"> 次</p>
+	<p><input type="text" value="0"> 次</p>
 	</div>
 	</li>
 	<li><a href="" class="shuaxin"><span>点击刷新</span></a></li>

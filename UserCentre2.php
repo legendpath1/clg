@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 error_reporting(0);
 require_once 'conn.php';
@@ -50,8 +50,6 @@ $rowb = mysql_fetch_array($rsb);
 // Add new activity chance here
 $activity1 = floor($rowb['tempmoney'] / 1888);
 $tempmoney = $rowb['tempmoney'] - ($activity1 * 1888);
-$activity1 = $activity1 + $rowb['activity1'];
-$exe = mysql_query("update ssc_member set tempmoney=".$tempmoney.", activity1=".$activity1." where id='". $_SESSION['uid'] ."'");
 
 if($_GET['clause'] == 'saveinfo')
 {
@@ -212,7 +210,12 @@ if($_GET['clause'] == 'saveinfo')
 </ul>
 </div>
 <div class="right">
-<h3>资金互转：</h3>
+<div class="headtitle">
+        <ul>
+            <li class="t1"><a href="http://www.cailegong.com//UserCentre.php">奖品兑换</a></li>
+            <li class="t2"><a>资金互转</a></li>
+          </ul>
+        </div>
 <div class="zh-tools">
 <ul>
 	<li class="t1"><a><span>彩乐彩 <strong> </strong> 彩弈轩</span></a></li>
@@ -221,13 +224,13 @@ if($_GET['clause'] == 'saveinfo')
 </ul>
 </div>
 <div class="box-disc">
-<table width="100%" class="ct" border="0" cellspacing="0"
+<table width="90%" class="ct" border="0" cellspacing="0"
 	cellpadding="0">
 	<form action="?clause=saveinfo" method="post" name="drawform"
 		id="drawform"><input type="hidden" name="flag" value="confirm" />
 	<tr>
-		<td width="12%" class="nl"><font color="#FF3300">兑换说明:</font></td>
-		<td width="88%" class="nll" STYLE='line-height: 23px; padding: 5px 0px'>彩乐彩与彩弈轩的兑换率为1元：1000游戏币，操作金额必须为整数，例如：88元彩乐彩金可转换为88000彩弈轩游戏币，反之88000彩弈轩游戏币可转换为88元彩乐彩金。</td>
+		<td width="17%" class="nl"><font color="#FF3300">兑换说明:</font></td>
+		<td width="83%" class="nll" STYLE='line-height: 23px; padding: 5px 0px'>彩乐彩与彩弈轩的兑换率为1元：1000游戏币，操作金额必须为整数，例如：88元彩乐彩金可转换为88000彩弈轩游戏币，反之88000彩弈轩游戏币可转换为88元彩乐彩金。</td>
 	</tr>
 	<tr>
 		<td class="nl">兑换率:</td>
@@ -285,19 +288,19 @@ if($_GET['clause'] == 'saveinfo')
 	<li>
 	<div class="padding"><strong><img src="images/userCentre/cljh (2).png"></strong>
 	<p><img src="images/userCentre/kbx.png"></p>
-	<p><input type="text" value="<?php echo $activity1?>"> 次</p>
+	<p><input type="text" value="0"> 次</p>
 	</div>
 	</li>
 	<li>
 	<div class="padding"><strong><img src="images/userCentre/zmd-img.png"></strong>
 	<p><img src="images/userCentre/zmd.png"></p>
-	<p><input type="text" value="<?php echo $activity1?>"> 次</p>
+	<p><input type="text" value="0"> 次</p>
 	</div>
 	</li>
 	<li>
 	<div class="padding"><strong><img src="images/userCentre/kjd-img.png"></strong>
 	<p><img src="images/userCentre/kjd.png"></p>
-	<p><input type="text" value="<?php echo $activity1?>"> 次</p>
+	<p><input type="text" value="0"> 次</p>
 	</div>
 	</li>
 	<li><a href="" class="shuaxin"><span>点击刷新</span></a></li>

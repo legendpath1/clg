@@ -66,5 +66,12 @@ $result['leftmoney'] = $rowb['leftmoney'];
 $sqld="update ssc_member set leftmoney='".($res['prize'] + $rowb['leftmoney'])."', activity1='".($rowb['activity1']-1)."' where id='".$rowb['id']."'";
 $exed=mysql_query($sqld) or  die("数据库修改出错8!!!");
 
+// 账变
+$sql = "select * from ssc_record order by id desc limit 1";
+$rs1 = mysql_fetch_array(mysql_query($sql));
+$dan = sprintf("%07s",strtoupper(base_convert($rs1['id']+1,10,36))).sprintf("%02s",strtoupper(base_convert(mt_rand(0,1295),10,36)));
+$sql="insert into ssc_record set dan='" . $dan . "', tag='转盘', uid='".$rowb['id']."', username='".$rowb['username']."', types='999', smoney=".$res['prize'].", leftmoney=".($res['prize'] + $rowb['leftmoney']).", regtop='".$rowb['regtop']."', regup='".$rowb['regup']."', regfrom='".$rowb['regfrom']."', adddate='".date("Y-m-d H:i:s")."', virtual='" .$rowb['virtual']. "'";
+mysql_query($sql) or die ("数据库修改出错9!!!");
+
 echo json_encode($result);
 ?>

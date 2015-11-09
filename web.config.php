@@ -1,8 +1,8 @@
 <?php
 //数据库连接配置
-$con_db_host = '61.38.252.37:3306';	//ip
+$con_db_host = '110.173.58.18:3306';	//ip
 $con_db_id = 'root';	//帐号
-$con_db_pass = 'root';	//密码
+$con_db_pass = 'Zjcstwx2000';	//密码
 $con_db_name = 'cailecai';	//数据库名
 
 //------------------------------------------------------------
@@ -12,4 +12,5 @@ $SOPEN = 1;
 
 //棋牌站的网址。当棋牌站网址变更时，需要修改该网址
 //注意：不要以“/”结尾
-$WEBURL_QP = 'http://www.cyx818.com:801';
+$WEBURL_QP = 'http://www.caiyixuan.net';
+?>
