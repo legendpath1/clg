@@ -4,7 +4,6 @@ include_once("include/mysql.php");
 include_once("include/lib_base.php");
 
 
-
 require(ROOT_PATH."include/lib_page.php");
 $mysql=new MySQL();
 $mysql->connect();

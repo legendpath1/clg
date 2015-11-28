@@ -143,7 +143,7 @@ if ($_GET['clause'] == 'tt'  && $_POST['subbtn'] == "确认") {
               <p><span>您需要兑换：</span>
                 <input type="text" name="num_zp" id="num_zp" value="<?php echo $max_activity;?>">
                 <span class="yel">次</span>
-              <input class="sub" name="subbtn" id="subbtn" type="image" src="/images/usercentre/yes2.png" value="确认"></p>
+              <input class="sub" name="subbtn" id="subbtn" type="image" src="images/userCentre/yes.png" value="确认"></p>
               </form>
             </div>
             <div class="b">
@@ -160,7 +160,7 @@ if ($_GET['clause'] == 'tt'  && $_POST['subbtn'] == "确认") {
               <p><span>您需要兑换：</span>
                 <input type="text" name="num_tt" id="num_tt">
                 <span class="yel">层</span>
-              <input class="sub" name="subbtn" id="subbtn" type="image" src="/images/usercentre/yes2.png" value="确认"></p>
+              <input class="sub" name="subbtn" id="subbtn" type="image" src="images/userCentre/yes.png" value="确认"></p>
               </form>
             </div>
             <div class="b">

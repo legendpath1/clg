@@ -6,7 +6,7 @@ var $CONN = "";
 
 var $DBASE = "wlsxsql";                
 var $USER = "root"; 
-var $PASS = "root";
+var $PASS = "Zjcstwx2000";
 var $SERVER = "localhost:3306"; 
 
 var $LSTART;  //limit LSTART,NUMEVERYPAGE

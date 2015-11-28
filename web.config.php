@@ -1,6 +1,6 @@
 <?php
 //数据库连接配置
-$con_db_host = '110.173.58.18:3306';	//ip
+$con_db_host = 'localhost';	//ip
 $con_db_id = 'root';	//帐号
 $con_db_pass = 'Zjcstwx2000';	//密码
 $con_db_name = 'cailecai';	//数据库名
