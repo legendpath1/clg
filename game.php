@@ -103,10 +103,10 @@
           <!-- 导航 -->
     <div class="flg_menu">
           <ul class="nav">
-            <a href="index.html"><li class="go_index"></li></a>
-              <a href="index-2.html"><li class="pro"></li></a>
-              <li class="none"><a href="index.html"><img src="images/logo.png"></a></li>
-              <a href="index-3.html"><li class="active"></li></a>
+            <a href="index.php"><li class="go_index"></li></a>
+              <a href="index-2.php"><li class="pro"></li></a>
+              <li class="none"><a href="index.php"><img src="images/logo.png"></a></li>
+              <a href="index-3.php"><li class="active"></li></a>
               <a id="woqu" ><li class="go_game"></li></a>
         </ul>
     </div>

@@ -259,7 +259,7 @@ h2.welcome-title {
 }
 
 .project-title {
-	background: url(/images/zp/bgbg.png) no-repeat;
+	background: url(../../images/zp/bgbg.png) no-repeat;
 	margin-bottom: 20px;
 	-moz-animation-delay: 0.5s;
 	-webkit-animation-delay: 0.5s;
