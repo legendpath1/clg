@@ -58,7 +58,7 @@ ul{ list-style:none}
 .headtitle{overflow:hidden}
 .headtitle ul{ list-style:none; overflow:hidden; width:100%;}
 .headtitle ul li{ width:20%; padding-right:15px; float:left; display:inline}
-.headtitle ul li a{ display:block;  background:url(../../images/usercentre/short-tex.png) no-repeat center center; width:145px; height:45px; line-height:45px;color:#c5b181; font-size:18px; font-weight:bold; text-align:center; background-size:100% 100%}
+.headtitle ul li a{ display:block;  background:url(../../images/userCentre/short-tex.png) no-repeat center center; width:145px; height:45px; line-height:45px;color:#c5b181; font-size:18px; font-weight:bold; text-align:center; background-size:100% 100%}
 
 .zh-tools{ padding-top:20px; overflow:hidden}
 .zh-tools ul{ list-style:none; overflow:hidden; width:100%;}
