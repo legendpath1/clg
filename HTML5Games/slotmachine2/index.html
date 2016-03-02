@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jquery+Flash老虎机抽奖源码模板v1.0</title>
+<style type="text/css">
+body { margin:0; padding:0; font-family:"微软雅黑"; }
+a { text-decoration: none; color:#0f3f94;}
+a:hover { color:#F30; text-decoration:underline;}
+h1 { background:#ccc; margin:0; padding:20px; }
+h2 { margin:0; padding:20px 0; }
+.intro{padding:20px;  line-height:24px;}
+iframe { border:0; margin:0 20px; display:block; width:520px; height:525px; }
+.p50 { padding-left:50px;}
+pre {line-height:22px; }
+pre span { color:#999; }
+.demo { padding:20px; border-bottom:#ccc solid 1px;}
+#footer{margin:15px auto; line-height:24px; text-align:center;color:#999; font-size:12px;padding:12px;}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+function getSwf(movieName){
+    if(window.document[movieName]){
+        return window.document[movieName];   
+    }else if(navigator.appName.indexOf("Microsoft") == -1){
+        if(document.embeds && document.embeds[movieName])   
+            return document.embeds[movieName];
+    }else{
+        return document.getElementById(movieName);
+    }   
+}
+
+award_id = 0; //奖品ID
+award_name = '';//中奖名称
+function start_lottery(){
+    var res = getSwf('lottery').start_lottery();
+    if(res != 1) return;//-1为加载资源失败；0为已在抽奖中
+    $.ajax({
+        url: 'lottery.php',
+        type: "post",
+        data:null,
+        dataType: "json",
+        timeout: 20000,
+        cache: false,
+        beforeSend: function(){// 提交之前
+        },
+        error: function(){//出错
+            getSwf('lottery').reset_lottery();//取消“正中抽奖中”标志，则可重新抽奖
+            alert('服务端出错！');
+        },
+        success: function(res){//成功
+            if(typeof(res.award_id)!='undefined'){
+                award_id = res.award_id;//得到奖品ID
+                award_name = res.award_name;//得到奖品名称
+                getSwf('lottery').show_lottery(award_id);//展现抽奖效果
+            }else{
+                getSwf('lottery').reset_lottery();//取消“正中抽奖中”标志，则可重新抽奖
+                alert('抽奖出错！');
+            }
+        }
+    });
+}
+//结束后调用的函数
+function lottery_result(){
+    if(award_id==0){
+        alert('为什么每次离大奖都是那么得近，又是那么得远！');
+    }else{
+        alert('感谢老天，感谢神仙姐姐让我中奖了！' + award_name + '！');
+    }
+}
+</script>
+</head>
+
+<body>
+<h1><center>Jquery+Flash老虎机抽奖源码模板v1.0</center></h1>
+<div class="intro">
+奖品图片外部调用，便于开发，只需要换一张图片，就可以完成看上去非常复杂的老虎机抽奖了。奖品数量、概率自由设置。兼容IE、火狐、谷歌等浏览器，效果表现好。<br />
+附flash源码（内有详细注释）、示例JS代码、示例PHP代码打包下载。
+</div>
+<div class="demo">
+  <h2>效果演示：</h2>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <object width="714" height="400" align="middle" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" id="lottery">
+        <param value="always" name="allowScriptAccess">
+        <param value="slot.swf" name="movie">
+        <param value="high" name="quality">
+        <param value="total_num=5&award=award.png" name="FlashVars">
+        <param value="transparent" name="wmode">
+        <param value="false" name="menu">
+        <embed FlashVars="total_num=5&award=award.png" width="714" height="400" align="middle" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" name="lottery" menu="false" quality="high" src="slot.swf">
+        </object>
+      </td>
+      <td class="p50">
+      <strong>抽奖规则：</strong><br /><br />
+      拉下拉杆即可参与抽奖，3个图案一致即可获得所示奖品！！
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="demo">
+<h2>参数说明：</h2>
+<pre>
+total_num = "5"              <span>//奖品个数（<b>必须</b>）</span>
+award = "award.png"          <span>//奖品图片（<b>必须</b>）</span>
+n1 = "1"                     <span>//初始时第1个盒子显示第几个奖品，非必须，默认显示第1个</span>
+n2 = "2";                    <span>//初始时第2个盒子显示第几个奖品，非必须，默认显示第2个</span>
+n3 = "3";                    <span>//初始时第3个盒子显示第几个奖品，非必须，默认显示第3个</span>
+</pre>
+</div>
+<div class="demo">
+<h2>注意事项</h2>
+1.奖品图片为透明PNG格式，宽度为170像素，高度为237像素*奖品个数。<br /><br />
+2.暂时没想到。有问题，请给我留言吧。<a href="http://www.thinkcart.net/jquery-flash-lottery-slot-174.html" target="_blank">点击给我留言</a><br /><br />
+3.不喜欢老虎机？那试试<a target="_blank" href="http://www.thinkcart.net/share/lottery/" title="Jquery+Flash抽奖转盘源码模板v1.0">转盘</a>或<a target="_blank" href="http://www.thinkcart.net/share/egg/" title="Jquery+Flash砸金蛋抽奖源码模板v1.0">砸金蛋</a>或<a target="_blank" href="http://www.thinkcart.net/share/box/" title="Jquery+Flash捞宝箱抽奖示例源码">捞宝箱</a>或<a target="_blank" href="http://www.thinkcart.net/share/lottery-marquee/" title="Jquery+PHP走马灯抽奖效果示例源码">走马灯</a>或<a target="_blank" href="http://www.thinkcart.net/share/lottery-card/" title="Jquery+Flash翻牌抽奖效果示例源码">翻牌</a>吧！
+<br /><br />
+</div>
+<div id="footer">
+<a href="http://www.thinkcart.net/">thinkphp学习博客</a>- 记录工作，生活，学习的点点滴滴！<br />
+<a href="http://www.diahosting.com/client/aff.php?aff=1979">美国VPS</a>- 感谢提供服务器！<br />
+</div>
+</body>
+</html>

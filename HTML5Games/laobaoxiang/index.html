@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jquery+Flash捞宝箱抽奖示例源码</title>
+<style type="text/css">
+body { margin:0; padding:0; font-family:"微软雅黑"; }
+a { text-decoration: none; color:#0f3f94;}
+a:hover { color:#F30; text-decoration:underline;}
+h1 { background:#ccc; margin:0; padding:20px; }
+h2 { margin:0; padding:20px 0; }
+.intro{padding:20px;  line-height:24px;}
+iframe { border:0; margin:0 20px; display:block; width:520px; height:525px; }
+.p50 { padding-left:50px;}
+pre {line-height:22px; }
+pre span { color:#999; }
+.demo { padding:20px; border-bottom:#ccc solid 1px;}
+#footer{margin:15px auto; line-height:24px; text-align:center;color:#999; font-size:12px;padding:12px;}
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+function getSwf(movieName){
+    if(window.document[movieName]){
+        return window.document[movieName];   
+    }else if(navigator.appName.indexOf("Microsoft") == -1){
+        if(document.embeds && document.embeds[movieName])   
+            return document.embeds[movieName];
+    }else{
+        return document.getElementById(movieName);
+    }   
+}
+
+award_id = 0; //奖品ID
+award_name = '';//中奖名称
+function start_lottery(){
+    $.ajax({
+        url: 'lottery.php',
+        type: "post",
+        data:null,
+        dataType: "json",
+        timeout: 20000,
+        cache: false,
+        beforeSend: function(){// 提交之前
+        },
+        error: function(){//出错
+            getSwf('lottery').reset_lottery();//取消“正中抽奖中”标志，则可重新抽奖
+            alert('服务端出错！');
+        },
+        success: function(res){//成功
+            if(typeof(res.award_id)!='undefined'){
+                award_id = res.award_id;//得到奖品ID
+                award_name = res.award_name;//得到奖品名称
+                getSwf('lottery').drag_box(award_id);//展现抽奖效果
+            }else{
+                getSwf('lottery').reset_lottery();//取消“正中抽奖中”标志，则可重新抽奖
+                alert('抽奖出错！');
+            }
+        }
+    });
+}
+//结束后调用的函数
+function lottery_result(){
+    if(award_id==0){
+        alert('唉呀！手一滑，宝箱没有捞到！');
+    }else{
+        alert('很沉，很沉，宝箱捞到了，打开一看。' + award_name + '！');
+    }
+}
+</script>
+</head>
+
+<body>
+<h1><center>Jquery+Flash捞宝箱抽奖示例源码</center></h1>
+<div class="intro">
+捞宝箱抽奖效果可能不及转盘、老虎机等效果出色，而且定制可能有点困难，但还是有一定的趣味性和特色的。如果想要转盘和老虎机等抽奖效果，点下面的链接吧。本人搞PHP，flash做得有点粗糙，希望高手们指点一下。<br />
+附flash源码、示例JS代码、示例PHP代码打包下载。
+</div>
+<div class="demo">
+  <h2>效果演示：</h2>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <object width="595" height="536" align="middle" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" id="lottery">
+        <param value="always" name="allowScriptAccess">
+        <param value="box.swf" name="movie">
+        <param value="high" name="quality">
+        <param value="transparent" name="wmode">
+        <param value="false" name="menu">
+        <embed width="595" height="536" align="middle" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" name="lottery" menu="false" quality="high" src="box.swf">
+        </object>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="demo">
+<h2>注意事项</h2>
+1.暂时没想到。有问题，请给我留言吧。<a href="http://www.thinkcart.net/jquery-flash-drag-box-187.html" target="_blank">点击给我留言</a><br /><br />
+2.不喜欢捞宝箱？那试试<a target="_blank" href="http://www.thinkcart.net/share/lottery/" title="Jquery+Flash抽奖转盘源码模板v1.0">转盘</a>或<a target="_blank" href="http://www.thinkcart.net/share/egg/" title="Jquery+Flash砸金蛋抽奖源码模板v1.0">砸金蛋</a>或<a target="_blank" href="http://www.thinkcart.net/share/slot/" title="Jquery+Flash老虎机抽奖源码模板v1.0">老虎机</a>或<a target="_blank" href="http://www.thinkcart.net/share/lottery-marquee/" title="Jquery+PHP走马灯抽奖效果示例源码">走马灯</a>或<a target="_blank" href="http://www.thinkcart.net/share/lottery-card/" title="Jquery+Flash翻牌抽奖效果示例源码">翻牌</a>吧！
+<br /><br />
+</div>
+<div id="footer">
+<a href="http://www.thinkcart.net/">thinkphp学习博客</a>- 记录工作，生活，学习的点点滴滴！<br />
+<a href="http://www.diahosting.com/client/aff.php?aff=1979">美国VPS</a>- 感谢提供服务器！<br />
+</div>
+</body>
+</html>
